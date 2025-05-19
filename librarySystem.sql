@@ -94,3 +94,24 @@ UPDATE book SET stock = stock - 1 WHERE bookID = 9;
 UPDATE book SET stock = stock - 1 WHERE bookID = 4;
 
 COMMIT;
+
+-- manually update status and add returned date for returned books
+-- use transaction to ensure all-or-nothing update
+BEGIN;
+
+UPDATE borrowing
+SET status = 'Returned',
+    returnDate = current_timestamp 
+where bookID = 5;
+
+UPDATE borrowing
+SET status = 'Returned',
+    returnDate = current_timestamp 
+where bookID = 4;
+
+UPDATE borrowing
+SET status = 'Returned',
+    returnDate = current_timestamp 
+where bookID = 2;
+
+COMMIT;
