@@ -2,7 +2,7 @@
 CREATE TYPE current_status AS enum ('Borrowed', 'Returned'); 
 
 -- create a table for student
-create table student
+CREATE TABLE student
 (
     studentID serial not null PRIMARY KEY,
     studentName varchar (100) not null,
@@ -10,17 +10,17 @@ create table student
 );
 
 -- create a table for book
-create table book
+CREATE TABLE book
 (
     bookID serial not null PRIMARY KEY,
     bookName varchar (100) not null,
     author varchar (100) not null,
     stock int not null,
-    CONSTRAINT check_book_stock check(stock >= 0)
+    CONSTRAINT check_book_stock CHECK(stock >= 0)
 );
 
 -- create a table for borrowing
-create table borrowing
+CREATE TABLE borrowing
 (
     borrowingID serial not null PRIMARY KEY,
     studentID int not null,
@@ -33,8 +33,8 @@ create table borrowing
 );
 
 -- insert values to student's table
-insert into student(studentName, studentClass)
-values('Jason', '10B'),
+INSERT INTO student(studentName, studentClass)
+VALUES('Jason', '10B'),
       ('Frod', '11A'),
       ('Rachel', '10A'),
       ('Emily', '12C'),
@@ -43,11 +43,11 @@ values('Jason', '10B'),
       ('Anne', '10C');
 
 -- select query to view student's table
-select * from student;
+SELECT * FROM student;
 
 -- insert values to book's table
-insert into book(bookName, author, stock)
-values('The Power of Habit', 'Charles Duhigg', 5),
+INSERT INTO book(bookName, author, stock)
+VALUES('The Power of Habit', 'Charles Duhigg', 5),
       ('Deep Work', 'Cal Newport', 1),
       ('Atomic Habits', 'James Clear', 4),
       ('The 5 AM Club', 'Robin Sharma', 2),
@@ -61,8 +61,8 @@ values('The Power of Habit', 'Charles Duhigg', 5),
 SELECT * FROM book;
 
 -- insert values to borrowing's table
-insert into borrowing(studentID, bookID)
-values(1, 2),
+INSERT INTO borrowing(studentID, bookID)
+VALUES(1, 2),
       (1, 5),
       (2, 3),
       (3, 9),
@@ -75,7 +75,7 @@ values(1, 2),
       (7, 4);
 
 -- select query to view borrowing's table
-SELECT * from borrowing;
+SELECT * FROM borrowing;
 
 -- manually decrease stock for borrowed books
 -- use transaction to ensure all-or-nothing update
@@ -102,7 +102,7 @@ BEGIN;
 UPDATE borrowing
 SET status = 'Returned',
     returnDate = current_timestamp 
-where bookID = 5;
+WHERE bookID = 5;
 
 UPDATE borrowing
 SET status = 'Returned',
@@ -112,7 +112,7 @@ where bookID = 4;
 UPDATE borrowing
 SET status = 'Returned',
     returnDate = current_timestamp 
-where bookID = 2;
+WHERE bookID = 2;
 
 COMMIT;
 
