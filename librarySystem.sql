@@ -76,3 +76,21 @@ values(1, 2),
 
 -- select query to view borrowing's table
 select * from borrowing;
+
+-- manually decrease stock for borrowed books
+-- use transaction to ensure all-or-nothing update
+BEGIN;
+
+UPDATE book SET stock = stock - 1 WHERE bookID = 2;
+UPDATE book SET stock = stock - 1 WHERE bookID = 5;
+UPDATE book SET stock = stock - 1 WHERE bookID = 3;
+UPDATE book SET stock = stock - 1 WHERE bookID = 9;
+UPDATE book SET stock = stock - 1 WHERE bookID = 6;
+UPDATE book SET stock = stock - 1 WHERE bookID = 1;
+UPDATE book SET stock = stock - 1 WHERE bookID = 3;
+UPDATE book SET stock = stock - 1 WHERE bookID = 7;
+UPDATE book SET stock = stock - 1 WHERE bookID = 8;
+UPDATE book SET stock = stock - 1 WHERE bookID = 9;
+UPDATE book SET stock = stock - 1 WHERE bookID = 4;
+
+COMMIT;
