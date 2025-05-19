@@ -16,6 +16,18 @@ create table book
     bookName varchar (100) not null,
     author varchar (100) not null,
     stock int not null,
-    constraint check_book_stock check(stock >= 0)
+    CONSTRAINT check_book_stock check(stock >= 0)
 );
 
+-- create a table for borrowing
+create table borrowing
+(
+    borrowingID serial not null PRIMARY KEY,
+    studentID int not null,
+    bookID int not null,
+    borrowingDate TIMESTAMP not null default current_timestamp,
+    status current_status not null default 'Borrowed',
+    returnDate TIMESTAMP,
+    CONSTRAINT fk_student FOREIGN KEY (studentID) REFERENCES student(studentID) ON DELETE CASCADE,
+    CONSTRAINT fk_book FOREIGN KEY (bookID) REFERENCES book(bookID)
+);
