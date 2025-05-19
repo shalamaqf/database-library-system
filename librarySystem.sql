@@ -1,3 +1,6 @@
+-- create an enum type for status
+create type current_status as enum ('Borrowed', 'Returned'); 
+
 -- create a table for student
 create table student
 (
@@ -15,3 +18,4 @@ create table book
     stock int not null,
     constraint check_book_stock check(stock >= 0)
 );
+
