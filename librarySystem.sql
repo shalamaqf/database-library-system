@@ -59,3 +59,20 @@ values('The Power of Habit', 'Charles Duhigg', 5),
 
 -- select query to view book's table
 select * from book;
+
+-- insert values to borrowing's table
+insert into borrowing(studentID, bookID)
+values(1, 2),
+      (1, 5),
+      (2, 3),
+      (3, 9),
+      (4, 6),
+      (4, 1),
+      (4, 3),
+      (5, 7),
+      (6, 8),
+      (6, 9),
+      (7, 4);
+
+-- select query to view borrowing's table
+select * from borrowing;
