@@ -1,5 +1,5 @@
 -- create an enum type for status
-create type current_status as enum ('Borrowed', 'Returned'); 
+CREATE TYPE current_status AS enum ('Borrowed', 'Returned'); 
 
 -- create a table for student
 create table student
@@ -58,7 +58,7 @@ values('The Power of Habit', 'Charles Duhigg', 5),
       ('The Great Gatsby', 'F. Scott Fitzgerald', 3);
 
 -- select query to view book's table
-select * from book;
+SELECT * FROM book;
 
 -- insert values to borrowing's table
 insert into borrowing(studentID, bookID)
@@ -75,7 +75,7 @@ values(1, 2),
       (7, 4);
 
 -- select query to view borrowing's table
-select * from borrowing;
+SELECT * from borrowing;
 
 -- manually decrease stock for borrowed books
 -- use transaction to ensure all-or-nothing update
@@ -115,3 +115,13 @@ SET status = 'Returned',
 where bookID = 2;
 
 COMMIT;
+
+-- join query to joins student's and book's table in borrowing table
+SELECT student.studentName, 
+       book.bookName, 
+       borrowing.status, 
+       borrowing.borrowingDate,
+       borrowing.returnDate
+FROM borrowing
+INNER JOIN student ON borrowing.studentID = student.studentID 
+INNER JOIN book ON borrowing.bookID = book.bookID;
