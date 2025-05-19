@@ -42,5 +42,20 @@ values('Jason', '10B'),
       ('David', '11B'),
       ('Anne', '10C');
 
--- select queries to view student's table
+-- select query to view student's table
 select * from student;
+
+-- insert values to book's table
+insert into book(bookName, author, stock)
+values('The Power of Habit', 'Charles Duhigg', 5),
+      ('Deep Work', 'Cal Newport', 1),
+      ('Atomic Habits', 'James Clear', 4),
+      ('The 5 AM Club', 'Robin Sharma', 2),
+      ('Outliers', 'Malcolm Gladwell', 3),
+      ('To Kill a Mockingbird', 'Harper Lee', 2),
+      ('How to Win Friends and Influence People', 'Dale Carnegie', 5),
+      ('Attitude is Everything', 'Jeff Keller', 1),
+      ('The Great Gatsby', 'F. Scott Fitzgerald', 3);
+
+-- select query to view book's table
+select * from book;
