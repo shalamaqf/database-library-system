@@ -31,3 +31,16 @@ create table borrowing
     CONSTRAINT fk_student FOREIGN KEY (studentID) REFERENCES student(studentID) ON DELETE CASCADE,
     CONSTRAINT fk_book FOREIGN KEY (bookID) REFERENCES book(bookID)
 );
+
+-- insert values to student's table
+insert into student(studentName, studentClass)
+values('Jason', '10B'),
+      ('Frod', '11A'),
+      ('Rachel', '10A'),
+      ('Emily', '12C'),
+      ('Mike', '12B'),
+      ('David', '11B'),
+      ('Anne', '10C');
+
+-- select queries to view student's table
+select * from student;
